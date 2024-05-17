@@ -20,3 +20,17 @@ model User {
   password    String
   phoneNumber String
 }
+
+model Restaurant {
+  id         String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name       String
+  location   String
+  photoCover String
+  speciality String[]
+}
+
+model Cart {
+  id       String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  item     String
+  quantity Int    @db.Integer
+}
