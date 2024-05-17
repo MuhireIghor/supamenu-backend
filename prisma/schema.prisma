@@ -25,7 +25,7 @@ model Restaurant {
   id         String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   name       String
   location   String
-  photoCover String
+  photoCover String?
   speciality String[]
 }
 

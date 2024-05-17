@@ -41,7 +41,11 @@ export const getAllRestos = async (req: Request, res: Response) => {
 export const updateRestaurant = async (req: Request, res: Response) => {
     const { id } = req.params
     try {
-        const updatedRestaurant = await updateRestaurantById(id, req.body);
+        const updatedRestaurant:any = await updateRestaurantById(id, req.body);
+        if (updatedRestaurant.message) {
+            return res.status(500).json(updatedRestaurant)
+
+        }
         return res.status(200).json(ApiResponse.success("Restaurant updated successfully", updatedRestaurant))
 
     }
