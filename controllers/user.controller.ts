@@ -22,7 +22,7 @@ export const getUserById = async (req: Request, res: Response) => {
 
     }
     catch (err) {
-        return res.status(500).json(ApiResponse.error("Error occured during user creation process", null))
+        return res.status(500).json(ApiResponse.error("Error occured during user retrieval process", null))
 
     }
 }
@@ -34,7 +34,7 @@ export const getAllUsers = async (req: Request, res: Response) => {
 
     }
     catch (err) {
-        return res.status(500).json(ApiResponse.error("Error occured during user creation process", null))
+        return res.status(500).json(ApiResponse.error("Error occured during users retrieval process", null))
 
     }
 }
@@ -46,7 +46,7 @@ export const updateUser = async (req: Request, res: Response) => {
 
     }
     catch (err) {
-        return res.status(500).json(ApiResponse.error("Error occured during user creation process", null))
+        return res.status(500).json(ApiResponse.error("Error occured during user updating process", null))
 
     }
 }
