@@ -91,3 +91,13 @@ export const deleteUserById = async (id: string) => {
         return ApiResponse.error(`Error occured during operation ${(err as unknown as any).message}`, null)
     }
 }
+
+export const assignRoleToUser = async () => {
+    try {
+        
+
+    }
+    catch (err) {
+        return ApiResponse.error(`Error occured during operation ${(err as unknown as any).message}`, null)
+    }
+}
