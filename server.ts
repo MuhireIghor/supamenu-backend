@@ -4,6 +4,7 @@ import { config } from "dotenv";
 import { ENDPOINT } from "./utils/core.util";
 import authRoute from "./routes/user.route";
 import restoRoute from "./routes/restaurant.route";
+import rolesRoute from "./routes/role.route";
 config();
 const port = process.env.PORT || 8000;
 const app = express();
@@ -13,6 +14,7 @@ app.use(cors({
 }))
 app.use(`${ENDPOINT}/users`, authRoute)
 app.use(`${ENDPOINT}/restaurants`, restoRoute)
+app.use(`${ENDPOINT}/roles`, rolesRoute)
 app.get("/", async (req: Request, res: Response) => {
     return res.status(200).json({
         message: "Welcome to supa menu apis"
