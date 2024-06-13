@@ -6,12 +6,12 @@ export const findRoleById = async (id: string) => {
         const role = await prisma.userRole.findUnique({
             where: {
                 id
-            }
+        }
         })
         return role;
     }
     catch (err) {
-        return ApiResponse.error("Error occured during operation", null)
+        throw new Error(`Role with id ${id} is not found`)
     }
 }
 export const findAllRoles = async () => {
@@ -20,7 +20,7 @@ export const findAllRoles = async () => {
         return roles;
     }
     catch (err) {
-        return ApiResponse.error("Error occured during operation", null)
+        throw new Error(`Error occured in fetching roles ${(err as any)?.message}`)
     }
 
 }
@@ -61,9 +61,8 @@ export const updateRoleById = async (id: string, payload: any) => {
         return updatedRole;
 
     }
-    catch (err) {
-        return ApiResponse.error("Error occured during operation", null)
-
+    catch (err: any) {
+        throw new Error(`Error occured in updating role ${err.message}`)
     }
 }
 export const deleteRoleById = async (id: string) => {
@@ -84,8 +83,8 @@ export const deleteRoleById = async (id: string) => {
         return deletedrole;
 
     }
-    catch (err) {
-        return ApiResponse.error(`Error occured during operation ${(err as unknown as any).message}`, null)
+    catch (err: any) {
+        throw new Error(`Error occured in deleting role ${err.message}`)
     }
 }
 export const getRoleByName = async (name: string) => {
@@ -107,7 +106,6 @@ export const getRoleByName = async (name: string) => {
         return isRoleExistent;
     }
     catch (err) {
-        return ApiResponse.error(`Error occured during operation ${(err as unknown as any).message}`, null)
-
+        throw new Error(`Error occured in getting role witht name ${name}`)
     }
 }

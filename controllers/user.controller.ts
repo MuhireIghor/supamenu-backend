@@ -1,16 +1,17 @@
 import { Request, Response } from "express";
 import ApiResponse from "../utils/ApiResponse.util";
-import { createUser, deleteUserById, findAllUsers, findUserById, updateUserById } from "../services/user.service";
+import { assignRoleToUser, createUser, deleteUserById, findAllUsers, findUserById, updateUserById } from "../services/user.service";
 
 export const registerUser = async (req: Request, res: Response) => {
     try {
-        const payload = req.body;
-        const user = await createUser({ ...payload });
+        const { username, email, password, phoneNumber, roleName } = req.body
+
+        const user = await createUser({ username, email, password, phoneNumber }, roleName);
         return res.status(201).json(ApiResponse.success("User created Successfully", user))
 
     }
-    catch (err) {
-        return res.status(500).json(ApiResponse.error("Error occured during user creation process", null))
+    catch (err: any) {
+        return res.status(500).json(ApiResponse.error(err.message, null))
     }
 }
 export const getUserById = async (req: Request, res: Response) => {
@@ -21,8 +22,8 @@ export const getUserById = async (req: Request, res: Response) => {
 
 
     }
-    catch (err) {
-        return res.status(500).json(ApiResponse.error("Error occured during user retrieval process", null))
+    catch (err: any) {
+        return res.status(500).json(ApiResponse.error(err.message, null))
 
     }
 }
@@ -33,8 +34,8 @@ export const getAllUsers = async (req: Request, res: Response) => {
 
 
     }
-    catch (err) {
-        return res.status(500).json(ApiResponse.error("Error occured during users retrieval process", null))
+    catch (err: any) {
+        return res.status(500).json(ApiResponse.error(err.message, null))
 
     }
 }
@@ -45,8 +46,8 @@ export const updateUser = async (req: Request, res: Response) => {
         return res.status(200).json(ApiResponse.success("User updated successfully", updatedUser))
 
     }
-    catch (err) {
-        return res.status(500).json(ApiResponse.error("Error occured during user updating process", null))
+    catch (err: any) {
+        return res.status(500).json(ApiResponse.error(err.message, null))
 
     }
 }
@@ -61,8 +62,22 @@ export const deleteUser = async (req: Request, res: Response) => {
         return res.status(200).json(ApiResponse.success("User deleted successfully", deletedUser))
 
     }
-    catch (err) {
-        return res.status(500).json(ApiResponse.error("Error occured during user deleting process", null))
+    catch (err: any) {
+        return res.status(500).json(ApiResponse.error(err.message, null))
 
     }
+}
+export const assignRole = async (req: Request, res: Response) => {
+    const { roleName } = req.body;
+    const { id } = req.params
+    try {
+        const updatedStudent = await assignRoleToUser(id, roleName);
+        return res.status(200).json(ApiResponse.success("User role added successfully", updatedStudent))
+
+    }
+    catch (err: any) {
+        return res.status(500).json(ApiResponse.error(err.message, null))
+
+    }
+
 }

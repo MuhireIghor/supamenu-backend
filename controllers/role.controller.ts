@@ -37,8 +37,8 @@ export const getAllRoles = async (req: Request, res: Response) => {
 
 
     }
-    catch (err) {
-        return res.status(500).json(ApiResponse.error("Error occured during roles retrieval process", null))
+    catch (err:any) {
+        return res.status(500).json(ApiResponse.error("Error occured during roles retrieval process", err))
 
     }
 }

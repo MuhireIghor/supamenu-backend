@@ -1,12 +1,18 @@
 {
     "compilerOptions": {
-      "target": "es6",
+      "target": "esnext",
       "module": "CommonJS",
-      "outDir": "./dist",
+      "outDir": "./build",
       "rootDir": "./",
+      "moduleResolution": "node",
+      "esModuleInterop": true,
+      "skipLibCheck":true,
+      "forceConsistentCasingInFileNames": true,
+      "experimentalDecorators": true,
+      "strictPropertyInitialization": false,
       "strict": true,
       "noImplicitAny": false,
-      "esModuleInterop": true
+      "resolveJsonModule": true
 
     }
   }
