@@ -3,6 +3,17 @@ import ApiResponse from "../utils/ApiResponse.util";
 import { assignRoleToUser, createUser, deleteUserById, findAllUsers, findUserById, updateUserById } from "../services/user.service";
 
 export const registerUser = async (req: Request, res: Response) => {
+        /*  #swagger.requestBody = {
+            required: true,
+            content: {
+                "application/json": {
+                    schema: {
+                        $ref: "#/components/schemas/CreateUserDto"
+                    }  
+                }
+            }
+        } 
+    */
     try {
         const { username, email, password, phoneNumber, roleName } = req.body
 

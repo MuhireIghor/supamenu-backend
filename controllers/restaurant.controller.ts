@@ -3,6 +3,17 @@ import ApiResponse from "../utils/ApiResponse.util";
 import { createRestaurant, deleteRestaurantById, getAllRestaurants, getRestaurantById, updateRestaurantById } from "../services/restaurant.service";
 
 export const registerRestaurant = async (req: Request, res: Response) => {
+           /*  #swagger.requestBody = {
+            required: true,
+            content: {
+                "application/json": {
+                    schema: {
+                        $ref: "#/components/schemas/CreateRestaurantDto"
+                    }  
+                }
+            }
+        } 
+    */
     try {
         const payload = req.body;
         const restaurant = await createRestaurant({ ...payload });

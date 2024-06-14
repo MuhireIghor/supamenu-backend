@@ -5,6 +5,7 @@ const rolesRoute = express.Router();
 rolesRoute.post("/create",
     authMiddleWare(['Admin']), registerRole
     // #swagger.summary = 'Create new Role'
+
 )
 rolesRoute.get("/getAll", getAllRoles
     // #swagger.summary = 'Get all roles'

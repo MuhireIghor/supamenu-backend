@@ -27,9 +27,3 @@ app.use("*", (req, res) => {
 app.listen(port, () => {
     console.log(`App is listening on port ${port}`)
 })
-// import authRoute from "./routes/user.route";
-// import restoRoute from "./routes/restaurant.route";
-// import rolesRoute from "./routes/role.route";
-// app.use(`${ENDPOINT}/users`, authRoute)
-// app.use(`${ENDPOINT}/restaurants`, restoRoute)
-// app.use(`${ENDPOINT}/roles`, rolesRoute)

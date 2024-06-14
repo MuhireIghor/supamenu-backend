@@ -3,6 +3,17 @@ import { loginUser } from "../services/auth.service";
 import ApiResponse from "../utils/ApiResponse.util"
 
 export const handleLogin = async (req: Request, res: Response) => {
+       /*  #swagger.requestBody = {
+            required: true,
+            content: {
+                "application/json": {
+                    schema: {
+                        $ref: "#/components/schemas/LoginDto"
+                    }  
+                }
+            }
+        } 
+    */
     try {
         const { email, password } = req.body;
         const data = await loginUser({ email, password });
@@ -11,6 +22,9 @@ export const handleLogin = async (req: Request, res: Response) => {
                 "User logged in successfully", data
             )
         )
+
+
+        
 
 
     }

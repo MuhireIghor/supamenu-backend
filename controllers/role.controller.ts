@@ -2,7 +2,22 @@ import { Request, Response } from "express";
 import ApiResponse from "../utils/ApiResponse.util";
 import { createRole, deleteRoleById, findAllRoles, findRoleById, getRoleByName, updateRoleById } from "../services/role.service";
 
-export const registerRole = async (req: Request, res: Response) => {
+export const registerRole = async (req: Request, res: Response
+) => {
+    // #swagger.autoQuery = false
+
+    /*  #swagger.requestBody = {
+     required: true,
+     content: {
+         "application/json": {
+             schema: {
+                 $ref: "#/components/schemas/CreateRoleDto"
+             }  
+         }
+     }
+ } 
+*/
+
     try {
         const { name } = req.body;
         const isRoleExistent = await getRoleByName(name);
@@ -37,7 +52,7 @@ export const getAllRoles = async (req: Request, res: Response) => {
 
 
     }
-    catch (err:any) {
+    catch (err: any) {
         return res.status(500).json(ApiResponse.error("Error occured during roles retrieval process", err))
 
     }

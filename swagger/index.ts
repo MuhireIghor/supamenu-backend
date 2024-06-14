@@ -10,6 +10,32 @@ const doc = {
     schemes: ['http'],
     consumes: ['application/json'],
     produces: ['application/json'],
+    components: {
+        schemas: {
+            LoginDto: {
+                email: "",
+                password: ""
+            },
+            CreateRoleDto: {
+                name: ""
+            },
+            CreateRestaurantDto: {
+                name: "",
+                location: "",
+                photoCover: "",
+                speciality: [""]
+            },
+            CreateUserDto:{
+                username:"",
+                email:"",
+                password:"",
+                phoneNumber:"",
+                roleName:""
+
+            }
+        }
+    }
+    ,
     tags: [
         {
             name: 'User',
@@ -41,6 +67,6 @@ const doc = {
 const outputFile = './swagger/doc/swagger.json';
 const routes = ['./routes/index.ts'];
 
-swaggerAutogen()(outputFile, routes, doc).then(async () => {
+swaggerAutogen({ openapi: '3.0.0', autoQuery: false })(outputFile, routes, doc).then(async () => {
     await import('./../server');
 });
