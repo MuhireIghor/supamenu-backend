@@ -1,7 +1,8 @@
-Backend service made using Express js and Typescript and Prism ORM
-For Supa Menu Mobile app 
+# Supa Menu Backend Service
 
-It has 4 basic structures namely:
+Backend service made using Express js and Typescript and Prism ORM For Supa Menu Mobile app 
+
+## It has 4 basic structures namely:
 Controllers
 Services
 Middleware
